@@ -1,70 +1,172 @@
-# Getting Started with Create React App
+# Aprendendo ReactJS
+<img src="./public/logo192.png" alt="Exemplo imagem">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Repositório dedicado ao estudo do ReacJS
 
-## Available Scripts
 
-In the project directory, you can run:
+## Menu
 
-### `npm start`
+- [Introdução](#introdução)
+- [Instalação](#instalação)
+- [Componentes](#componentes)
+- [Props](#props)
+- [Adicionando CSS](#adicionando-css)
+- [Fragments](#fragments)
+- [Hooks](#hooks)
+- [Eventos](#eventos)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Introdução
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- O ReactJS é uma biblioteca JavaScript para criação de interfaces.
 
-### `npm test`
+- Utilizado para construir SPAs (Single Page Applications).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Baseado em componentes.
 
-### `npm run build`
+- Utiliza o JSX para renderizar HTML.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Instalação
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Para instalar o React é necessário ter o Node e o npm instalados.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- A forma mais tradicional para se começar um projeto ReactJS é através do comando <u>create-react-app</u>
 
-### `npm run eject`
+- No entanto, a forma mais indicada para se começar um projeto React é através do vite com o comando <u>npm create vite@latest</u>. Uma vez que o CRA não recebe atualizações com frequência e a tecnologia do vite para compilar o projeto realiza o processo de build 20x mais rápido que o CRA.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Dica: Pesquise por <u>viteJS awesome</u> para acessar templates de React.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Componentes
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Blocos de construção reutilizáveis para criar interfaces de usuário. Cada componente pode ter seu próprio estado (dados internos) e comportamentos (funções).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Permitem dividir a aplicação em partes.
 
-## Learn More
+- Os componentes renderizam JSX, assim como App.js (que é um componente).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Precisa-se criar um arquivo de componente e importá-lo onde for utilizar.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Props
 
-### Code Splitting
+- Props (propriedades) são meios de passar dados de um componente pai para um componente filho.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- São basicamente argumentos que são fornecidos quando se cria ou utiliza um componente.
 
-### Analyzing the Bundle Size
+- Props deixam a aplicação dinânimca, mudando a execução de acordo com seu valor.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Props são somente variáveis de leitura.
 
-### Making a Progressive Web App
+- Exemplo:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+    ```
+    //componente pai
+    function App() {
+        return (<MeuComponente texto="Hello world" />);
+    }
 
-### Advanced Configuration
+    //componente filho
+    function MeuComponente(props){
+        return (<p>{props.texto}</p>);
+    }
+    ```
+## Adicionando CSS
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- O CSS pode ser adicionado de forma global na aplicação por meio de arquivos, como o index.css por exemplo.
 
-### Deployment
+- Também é possível estilizar a nível de componentes, utilizando CSS modules. Para isso, basta criar um arquivo como <u>NomeDoComponente.module.CSS</u> e importar este CSS dentro do componente.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Fragments
 
-### `npm run build` fails to minify
+- Uma maneira de agrupar múltiplos elementos filhos (normalmente para o return) sem a necessidade de adicionar um elemento extra à árvore DOM (como a div).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- A sintaxe é <> e </>, não havendo um nome para a tag.
+
+- Exemplo:
+    ```
+    <>
+        <p>Elemento 1</p>
+        <p>Elemento 2</p>
+    </>
+    ```
+
+## Hooks
+
+- Hook é uma função especial que permite utilizar funcionalidades de componentes de classe em componentes funcionais, possivilitando o use de estado e outras características do ciclo de vida de componentes baseados em funções.
+
+- No React os hookies são funções que começam com o prefixo "use", como <u>"useState"</u>, <u>"useEffect"</u>, <u>"useContext"</u>, entre outros.
+
+- Os hookies tornam os componentes funcionais mais poderosos, permitindo que eles tenham estado, efeitos, contextos e outras funcionalidades.
+
+- Exemplos comuns de hookies:
+    ```
+    import React, {useState} from 'react';
+
+    function MeuComponente() {
+    const [estado, setEstado] = useState(0);
+
+    return (
+        <div>
+        <p>Estado: {estado}</p>
+        <button onClick={() => setEstado(estado + 1)}>Incrementar</button>
+        </div>
+    );
+    }
+    ```
+    ```
+    import React, { useEffect, useState } from 'react';
+
+    function MeuComponente() {
+    const [dados, setDados] = useState(null);
+
+    useEffect(() => {
+        // Lógica a ser executada após a renderização do componente
+        fetch('https://api.exemplo.com/dados')
+        .then(response => response.json())
+        .then(data => setDados(data));
+    }, []); // O array vazio [] significa que este efeito ocorrerá apenas uma vez após a montagem inicial do componente.
+
+    return (
+        <div>
+        <p>Dados: {dados}</p>
+        </div>
+    );
+    }
+    ```
+
+## Eventos
+
+- Em React os eventos são manipulados de forma semelhante aos eventos HTML, mas com algumas diferenças importantes.
+
+- A manipulação de eventos em Reato é feita usando camelCase, como "onClick" em vez de "onclick".
+
+- Além disso, em React se passa uma função como manipuladora de evento quando o evento ocorre.
+
+- Exemplo básico de evento em react:
+    ```
+    import React, { useState } from 'react';
+
+    function MeuComponente() {
+    const [contador, setContador] = useState(0);
+
+    // Manipulador de evento
+    const handleClick = () => {
+        setContador(contador + 1);
+    };
+
+    return (
+        <div>
+        <p>Contador: {contador}</p>
+        {/* Evento de clique */}
+        <button onClick={handleClick}>Clique-me</button>
+        </div>
+    );
+    }
+    ```
+
+- Neste exemplo: 
+1. Criamos um estado (contador) usando o hook useState.
+2. Definimos uma função chamada handleClick que será chamada quando o botão for clicado. Essa função atualiza o estado do contador.
+3. Passamos a função handleClick para o evento onClick do botão.
+
+    Ao clicar no botão, a função handleClick é executada, e o estado do contador é atualizado, o que leva a uma re-renderização do componente com o valor atualizado exibido.
+
+- Além do onClick, há muitos outros eventos que você pode manipular em React, como onChange, onSubmit, onMouseOver, entre outros.
