@@ -68,6 +68,8 @@
         return (<p>{props.texto}</p>);
     }
     ```
+- É possível passar métodos como props de um componente pai para um componente filho. Permitindo que o componente filho invoque esses métodos definidos no componente pai
+ 
 ## Adicionando CSS
 
 - O CSS pode ser adicionado de forma global na aplicação por meio de arquivos, como o index.css por exemplo.
