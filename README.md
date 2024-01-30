@@ -16,6 +16,7 @@
 - [Eventos](#eventos)
 - [Renderização Condicional](#renderização-condicional)
 - [Renderização de listas](#renderização-de-listas)
+- [Lifiting State Up](#lifiting-state-up)
 
 ## Introdução
 
@@ -256,3 +257,54 @@
 2. Utilizamos o método map para percorrer cada elemento do array. O método map retorna um novo array de elementos React.
 3. Cada item do array é utilizado para criar um componente li (elemento de lista) dentro do JSX. A propriedade key é importante para ajudar o React a otimizar a renderização e a identificar quais itens foram adicionados, removidos ou reordenados.
 4. O resultado é uma lista ul com elementos de lista li correspondentes aos itens do array.
+
+## Lifiting State Up
+
+- O termo "lifting state up" em React refere-se à prática de mover o estado (state) de um componente filho para o componente pai quando dois ou mais componentes precisam compartilhar e sincronizar esse estado.
+
+- O objetivo é centralizar o estado em um componente pai comum, permitindo que os componentes filhos acessem e atualizem esse estado compartilhado.
+
+- Quando componentes precisam compartilhar estado, levantar o estado envolve os seguintes passos:
+1. Identificar o Estado Compartilhado: 
+    - Determine qual parte do estado precisa ser compartilhada entre os componentes. Pode ser um valor, um objeto ou até mesmo uma função que altera o estado.
+2. Mover o Estado para o Componente Pai:
+    - Transfira o estado identificado para o componente pai que engloba os componentes que precisam acessá-lo.
+3. Passar o Estado como Props:
+    - Passe o estado como propriedades (props) para os componentes filhos que precisam acessá-lo. Os componentes filhos podem então atualizar o estado chamando funções passadas como props.
+4. Atualizar o Estado no Componente Pai:
+    - Quando um componente filho atualiza o estado, essa atualização é refletida no estado do componente pai, já que o estado está sendo gerenciado e compartilhado pelo componente pai.
+
+- Exemplo:
+    ```
+    import React, { useState } from 'react';
+
+    // Componente Filho que precisa acessar e atualizar o estado
+    function Filho({ contador, onIncrement }) {
+        return (
+            <div>
+            <p>Contador no Filho: {contador}</p>
+            <button onClick={onIncrement}>Incrementar</button>
+            </div>
+        );
+    }
+
+    // Componente Pai que gerencia e compartilha o estado
+    function Pai() {
+        const [contador, setContador] = useState(0);
+
+        // Função para incrementar o contador
+        const incrementarContador = () => {
+            setContador(contador + 1);
+        };
+
+        return (
+            <div>
+            <h2>Componente Pai</h2>
+            {/* Passando o estado e a função de atualização como props para o componente Filho */}
+            <Filho contador={contador} onIncrement={incrementarContador} />
+            </div>
+        );
+    }
+
+    export default Pai;
+    ```
