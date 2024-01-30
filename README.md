@@ -15,6 +15,7 @@
 - [Hooks](#hooks)
 - [Eventos](#eventos)
 - [Renderização Condicional](#renderização-condicional)
+- [Renderização de listas](#renderização-de-listas)
 
 ## Introdução
 
@@ -175,6 +176,7 @@
 - Além do onClick, há muitos outros eventos que você pode manipular em React, como onChange, onSubmit, onMouseOver, entre outros.
 
 ## Renderização condicional
+
 - Em ReactJS, a renderização condicional é realizada utilizando estruturas condicionais, como if, else, e operadores ternários, dentro do método render de um componente. 
 
 - Isso permite que se determine quais elementos ou componentes devem ser renderizados com base em determinadas condições.
@@ -223,3 +225,34 @@
         );
     }
     ```
+
+## Renderização de listas
+
+- Para renderizar listas, pode-se usar o método map para criar elementos React a partir de um array de dados.
+
+- É possível unir operadores condiocionais com a renderização de listas.
+
+- Para utilizar o método map é necessário passar uma key (id único) para cada item
+
+- Exemplo:
+    ```
+    import React from 'react';
+
+    function ListaDeItens({ itens }) {
+        return (
+            <ul>
+            {itens.map((item, index) => (
+                // Cada elemento do array é mapeado para um componente de lista (li)
+                <li key={index}>{item}</li>
+            ))}
+            </ul>
+        );
+    }
+    export default ListaDeItens;
+    ```
+
+-Neste exemplo:
+1. O componente ListaDeItens recebe uma propriedade chamada itens, que é um array de dados.
+2. Utilizamos o método map para percorrer cada elemento do array. O método map retorna um novo array de elementos React.
+3. Cada item do array é utilizado para criar um componente li (elemento de lista) dentro do JSX. A propriedade key é importante para ajudar o React a otimizar a renderização e a identificar quais itens foram adicionados, removidos ou reordenados.
+4. O resultado é uma lista ul com elementos de lista li correspondentes aos itens do array.
