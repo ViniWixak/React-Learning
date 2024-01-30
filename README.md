@@ -14,6 +14,7 @@
 - [Fragments](#fragments)
 - [Hooks](#hooks)
 - [Eventos](#eventos)
+- [Renderização Condicional](#renderização-condicional)
 
 ## Introdução
 
@@ -172,3 +173,53 @@
     Ao clicar no botão, a função handleClick é executada, e o estado do contador é atualizado, o que leva a uma re-renderização do componente com o valor atualizado exibido.
 
 - Além do onClick, há muitos outros eventos que você pode manipular em React, como onChange, onSubmit, onMouseOver, entre outros.
+
+## Renderização condicional
+- Em ReactJS, a renderização condicional é realizada utilizando estruturas condicionais, como if, else, e operadores ternários, dentro do método render de um componente. 
+
+- Isso permite que se determine quais elementos ou componentes devem ser renderizados com base em determinadas condições.
+
+- Para realizar a renderização condicional precisa-se inicialmente declarar a variável a ser verificada entre chaves {}. 
+
+- O operador && pode ser utilizado ao lado da variável, indicando que o que vier após só poderá ser renderizado caso a validação anterior seja verdadeira.
+
+- Exemplos:
+    ```
+    import React from 'react';
+
+    function MeuComponente({ estáLogado }) {
+        return (
+            <div>
+            {estáLogado ? (
+                <p>Bem-vindo! Você está logado.</p>
+            ) : (
+                <p>Faça o login para acessar.</p>
+            )}
+            </div>
+        );
+    }
+    ```
+    ```
+    import React from 'react';
+
+    function MeuComponente({ estáLogado }) {
+        if (estáLogado) {
+            return <p>Bem-vindo! Você está logado.</p>;
+        } else {
+            return <p>Faça o login para acessar.</p>;
+        }
+    }
+    ```
+    ```
+    import React from 'react';
+
+    function MeuComponente({ estáLogado }) {
+        return (
+            <div>
+                {estáLogado && (
+                    <p>Bem-vindo! Você está logado.</p>
+                )}
+            </div>
+        );
+    }
+    ```
