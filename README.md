@@ -190,10 +190,10 @@
     ```
     import React from 'react';
 
-    function MeuComponente({ estáLogado }) {
+    function MeuComponente({ estaLogado }) {
         return (
             <div>
-            {estáLogado ? (
+            {estaLogado ? (
                 <p>Bem-vindo! Você está logado.</p>
             ) : (
                 <p>Faça o login para acessar.</p>
@@ -205,8 +205,8 @@
     ```
     import React from 'react';
 
-    function MeuComponente({ estáLogado }) {
-        if (estáLogado) {
+    function MeuComponente({ estaLogado }) {
+        if (estaLogado) {
             return <p>Bem-vindo! Você está logado.</p>;
         } else {
             return <p>Faça o login para acessar.</p>;
@@ -216,10 +216,10 @@
     ```
     import React from 'react';
 
-    function MeuComponente({ estáLogado }) {
+    function MeuComponente({ estaLogado }) {
         return (
             <div>
-                {estáLogado && (
+                {estaLogado && (
                     <p>Bem-vindo! Você está logado.</p>
                 )}
             </div>
@@ -282,8 +282,8 @@
     function Filho({ contador, onIncrement }) {
         return (
             <div>
-            <p>Contador no Filho: {contador}</p>
-            <button onClick={onIncrement}>Incrementar</button>
+                <p>Contador no Filho: {contador}</p>
+                <button onClick={onIncrement}>Incrementar</button>
             </div>
         );
     }
@@ -299,12 +299,89 @@
 
         return (
             <div>
-            <h2>Componente Pai</h2>
-            {/* Passando o estado e a função de atualização como props para o componente Filho */}
-            <Filho contador={contador} onIncrement={incrementarContador} />
+                <h2>Componente Pai</h2>
+                    {/* Passando o estado e a função de atualização como props para o componente Filho */}
+                <Filho contador={contador} onIncrement={incrementarContador} />
             </div>
         );
     }
 
     export default Pai;
     ```
+
+
+## React Router
+
+- O React Router é uma biblioteca que oferece funcionalidades de navegação para aplicações React. 
+
+- Permite que você crie aplicações de página única (Single Page Applications - SPAs) com uma experiência de navegação suave, sem a necessidade de recarregar a página inteira a cada mudança de rota.
+
+- Para utilizar precisa instalar a biblioteca: `npm install react-router-dom`
+
+- Principais conceitos e componentes do React Router:
+    1. BrowserRouter
+        + Um dos componentes principais do React Router. Ele utiliza a API de histórico do navegador HTML5 para controlar a navegação. Deve envolver toda a sua aplicação para fornecer a funcionalidade de roteamento.
+        + Exemplo:
+            ```
+                import { BrowserRouter as Router } from 'react-router-dom';
+                function App() {
+                    return (
+                        <Router>
+                            {/* Componentes da aplicação com navegação */}
+                        </Router>
+                    );
+                }
+            ```
+    2. Route
+        + Componente que associa um componente React a um caminho específico no URL.
+        + Quando o caminho do URL corresponde à rota definida, o componente associado é renderizado.
+        + Exemplo:
+            ```
+                import { Route } from 'react-router-dom';
+                function Pagina1() {
+                    return <p>Página 1</p>;
+                }
+
+                function App() {
+                    return (
+                        <div>
+                          <Route path="/pagina-1" component={Pagina1} />
+                        </div>
+                    );
+                }
+
+            ```
+    3. Link
+        + Componente utilizado para criar links de navegação.
+        + Ao contrário de um link HTML padrão, o Link do React Router evita a recarga da página inteira, tornando a navegação mais rápida e fluida.
+        + Exemplo: 
+            ```
+                import { Link } from 'react-router-dom';
+                function Menu() {
+                    return (
+                        <nav>
+                            <ul>
+                                <li><Link to="/pagina-1">Página 1</Link></li>
+                                <li><Link to="/pagina-2">Página 2</Link></li>
+                            </ul>
+                        </nav>
+                    );
+                }
+            ```
+    4. Routes
+        + Lida com a lógica de roteamento da aplicação. 
+        + Renderiza apenas a primeira rota que corresponde ao caminho do URL. Isso é útil para evitar que várias rotas sejam renderizadas simultaneamente.
+        + Substituiu o método Switch na mudança de versão do React de v5 para v6.
+        + Exemplo:
+            ```
+                import { Routes, Route } from 'react-router-dom';
+                function App() {
+                    return (
+                        <Routes>
+                            <Route path="/pagina-1" component={Pagina1} />
+                            <Route path="/pagina-2" component={Pagina2} />
+                            <Route path="/" component={PaginaInicial} />
+                        </Routes>
+                    );
+                }
+            ```
