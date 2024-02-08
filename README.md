@@ -17,6 +17,7 @@
 - [Renderização Condicional](#renderização-condicional)
 - [Renderização de listas](#renderização-de-listas)
 - [Lifiting State Up](#lifiting-state-up)
+- [React Icons](#react-icons)
 
 ## Introdução
 
@@ -385,3 +386,25 @@
                     );
                 }
             ```
+
+## React Icons
+
+- O React Icons é uma biblioteca React que fornece componentes React para ícones populares de várias bibliotecas de ícones, como Font Awesome, Material Icons, Ionicons, entre outras. 
+
+- Essa biblioteca facilita a incorporação de ícones em componentes React, permitindo que você adicione ícones facilmente à sua aplicação, de forma parecida a um componente.
+
+- Para instalar o pacote: `npm install react-icons`.
+
+- Exemplo:
+    ```
+        import React from 'react';
+        import { FaReact } from 'react-icons/fa';
+
+        function MeuComponente() {
+            return (
+                <div>
+                <p>Este é um ícone do React: <FaReact /></p>
+                </div>
+            );
+        }
+    ```
